@@ -27,3 +27,13 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__toggle/form__toggle.css);
+@import url(../blocks/form/__toggle-image/form__toggle-image.css);
+@import url(../blocks/form/__admin/form__admin.css);
+@import url(../blocks/form/__heading/form__heading.css);
+@import url(../blocks/form/__input-container/form__input-container.css);
+@import url(../blocks/form/__item/form__item.css);
+@import url(../blocks/form/__handlers/form__handlers.css);
+@import url(../blocks/form/__submit/form__submit.css);

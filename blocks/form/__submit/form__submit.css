@@ -1,0 +1,19 @@
+.form__submit {
+  width: 109px;
+  height: 18px;
+    
+  border: 0;
+
+  font-family: inherit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  padding: 14px 124px 18px 125px;
+  margin: 0 auto;
+
+  background-color: #000000;
+  color: #FFFFFF;
+}

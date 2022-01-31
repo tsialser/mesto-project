@@ -1,0 +1,8 @@
+.form__toggle {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: -38px;
+    right: -38px;
+    cursor: pointer;
+}
