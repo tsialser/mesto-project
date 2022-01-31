@@ -4,3 +4,9 @@
     padding: 0;
     padding-top: 54px;
 }
+
+@media screen and (max-width: 425px){
+    .form__input-container {
+        padding-top: 75px;
+    }
+}

@@ -2,3 +2,10 @@
     max-width: 880px;
     margin: 0 auto;
 }
+
+@media screen  and (max-width: 425px){
+    .main {
+        padding-right: 19px;
+        padding-left: 19px;
+    }
+}
