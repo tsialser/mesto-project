@@ -17,7 +17,7 @@
       <section class="profile">
         <img src="./images/avatar.jpeg" alt="" class="profile__avatar" />
         <div class="profile__info">
-        <div class="profile__action">
+          <div class="profile__action">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button"></button>
           </div>
@@ -99,20 +99,34 @@
     </footer>
     <!-- Форма редактирования профиля-->
     <!--
-    <section class="form">
-        <div class="form__toggle">
-            <img src="./images/close_icon.svg" alt="" class="form__toggle-image">
-        </div>
-        <form action="" class="form__admin">
-            <h2 class="form__heading">Редактировать профиль</h2>
-            <fieldset class="form__input-container">
-                <input type="text" class="form__item" placeholder="Жак-Ив Кусто" name="name" id="name" required>
-                <input type="text" class="form__item" placeholder="Исследователь океана" name="job" id="job" required>
-            </fieldset>
-            <fieldset class="form__handlers">
-                <input type="submit" class="form__submit">
-            </fieldset>
+    <section class="popup popup_opened">
+      <div class="popup__container">
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <form name="profile-info" class="popup__form">
+          <input
+            type="text"
+            class="popup__input popup__input_content_name"
+            placeholder="Жак-Ив Кусто"
+            name="name"
+            id="name"
+            required
+          />
+          <input
+            type="text"
+            class="popup__input popup__input_content_job"
+            placeholder="Исследователь океана"
+            name="job"
+            id="job"
+            required
+          />
+          <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
+        <button
+          type="button"
+          area-label="Close"
+          class="popup__close-button popup__close-button_fluid"
+        ></button>
+      </div>
     </section>
     -->
   </body>
