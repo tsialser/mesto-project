@@ -3,8 +3,8 @@
   margin-bottom: 30px;
 }
 
-@media screen and (max-width: 425px) {
-    .popup__input_content_name {
-        margin-top: 75px;
-    }
+@media screen and (max-width: 950px) {
+  .popup__input_content_name {
+    margin-top: 75px;
+  }
 }

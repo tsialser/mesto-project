@@ -9,7 +9,7 @@
   color: #545454;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 950px) {
   .footer__copyright {
     font-style: normal;
     font-weight: normal;
