@@ -3,6 +3,10 @@
   margin-right: 250px;
 
   max-width: 340px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media screen and (max-width: 950px) {
