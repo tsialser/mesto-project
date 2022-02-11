@@ -8,4 +8,20 @@
   line-height: 2.6;
   color: #000;
   position: relative;
+
+  margin-top: 17px;
+}
+
+.popup__input:first-child {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 950px) {
+  .popup__input {
+    margin-top: 20px;
+  }
+
+  .popup__input:first-child {
+    margin-top: 65px;
+  }
 }

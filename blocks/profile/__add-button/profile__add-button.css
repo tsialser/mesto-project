@@ -10,10 +10,13 @@
   border: 2px solid #ffffff;
   box-sizing: border-box;
   border-radius: 2px;
+  transition: 0.5s ease-out;
 }
 
 @media screen and (max-width: 950px) {
   .profile__add-button {
+    background-image: url(../../../images/add_button_mobile.svg);
+
     width: 282px;
     margin-top: 36px;
   }

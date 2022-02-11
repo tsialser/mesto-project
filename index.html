@@ -15,11 +15,15 @@
     </header>
     <main class="main">
       <section class="profile">
-        <div class="profile__card"><img src="./images/avatar.jpeg" alt="" class="profile__avatar" />
+        <div class="profile__card">
+          <img src="./images/avatar.jpeg" alt="" class="profile__avatar" />
           <div class="profile__info">
             <div class="profile__action">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button button-hover"></button>
+              <button
+                class="profile__edit-button button-hover"
+                type="button"
+              ></button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
@@ -123,14 +127,9 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
     <!-- Форма редактирования профиля-->
-    <!--
-    <section class="popup popup_opened">
+    <section class="popup">
       <div class="popup__container">
-        <button
-          type="button"
-          area-label="Close"
-          class="popup__close-button button-hover"
-        ></button>
+        <button type="button" class="popup__close-button button-hover"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="edit-profile" class="popup__form">
           <input
@@ -149,10 +148,11 @@
             id="job"
             required
           />
-          <button type="submit" class="popup__submit-button button-hover">Сохранить</button>
+          <button type="submit" class="popup__submit-button button-hover">
+            Сохранить
+          </button>
         </form>
       </div>
     </section>
-    -->
   </body>
 </html>
