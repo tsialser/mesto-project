@@ -16,7 +16,11 @@
     <main class="main">
       <section class="profile">
         <div class="profile__card">
-          <img src="./images/avatar.jpeg" alt="" class="profile__avatar" />
+          <img
+            src="./images/avatar.jpeg"
+            alt="Аватарка профиля"
+            class="profile__avatar"
+          />
           <div class="profile__info">
             <div class="profile__action">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -28,7 +32,7 @@
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button button-hover"></button>
+        <button class="profile__add-button button-hover" type="button"></button>
       </section>
       <section class="elements" aria-label="Блок карточек">
         <article class="element">
@@ -134,7 +138,7 @@
         <form name="edit-profile" class="popup__form">
           <input
             type="text"
-            class="popup__input popup__input_content_name"
+            class="popup__input"
             placeholder="Жак-Ив Кусто"
             name="name"
             id="name"
@@ -142,7 +146,7 @@
           />
           <input
             type="text"
-            class="popup__input popup__input_content_job"
+            class="popup__input"
             placeholder="Исследователь океана"
             name="job"
             id="job"
