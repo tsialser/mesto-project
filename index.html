@@ -25,7 +25,7 @@
             <div class="profile__action">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <button
-                class="profile__edit-button button-hover"
+                class="profile__edit-button button-hover js-open-modal"
                 type="button"
               ></button>
             </div>
@@ -133,7 +133,7 @@
     <!-- Форма редактирования профиля-->
     <section class="popup">
       <div class="popup__container">
-        <button type="button" class="popup__close-button button-hover"></button>
+        <button type="button" class="popup__close-button button-hover js-close-modal"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="edit-profile" class="popup__form">
           <input
@@ -150,6 +150,34 @@
             placeholder="Исследователь океана"
             name="job"
             id="job"
+            required
+          />
+          <button type="submit" class="popup__submit-button button-hover">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- Форма добавления карточек-->
+    <section class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button button-hover js-close-modal"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form name="edit-profile" class="popup__form">
+          <input
+            type="text"
+            class="popup__input"
+            placeholder="Название"
+            name="name"
+            id="name"
+            required
+          />
+          <input
+            type="text"
+            class="popup__input"
+            placeholder="Ссылка на картинку"
+            name="link"
+            id="link"
             required
           />
           <button type="submit" class="popup__submit-button button-hover">
