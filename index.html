@@ -35,7 +35,7 @@
         <button class="profile__add-button button-hover" type="button"></button>
       </section>
       <section class="elements" aria-label="Блок карточек">
-        <article class="element">
+       <article class="element">
           <img
             src="./images/Карачаевск.jpg"
             alt="Кирпичное строение на фоне гор"
@@ -133,9 +133,13 @@
     <!-- Форма редактирования профиля-->
     <section class="popup popup__profile">
       <div class="popup__container">
-        <button type="button" class="popup__close-button button-hover" id="close-button-profile"></button>
+        <button
+          type="button"
+          class="popup__close-button button-hover"
+          id="close-button-profile"
+        ></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="edit-profile" id="edit-profile" class="popup__form">
+        <form name="edit-profile" id="form-profile" class="popup__form">
           <input
             type="text"
             class="popup__input"
@@ -161,9 +165,13 @@
     <!-- Форма добавления карточек-->
     <section class="popup popup__cards">
       <div class="popup__container">
-        <button type="button" class="popup__close-button button-hover" id="close-button-cards"></button>
+        <button
+          type="button"
+          class="popup__close-button button-hover"
+          id="close-button-cards"
+        ></button>
         <h2 class="popup__title">Новое место</h2>
-        <form name="edit-profile" class="popup__form">
+        <form name="edit-profile" id="form-cards" class="popup__form">
           <input
             type="text"
             class="popup__input"
@@ -181,11 +189,22 @@
             required
           />
           <button type="submit" class="popup__submit-button button-hover">
-            Сохранить
+            Добавить
           </button>
         </form>
       </div>
     </section>
+
+    <template id="card-template">
+      <article class="element">
+        <img class="element__image" />
+        <div class="element__item">
+          <h2 class="element__title"></h2>
+          <button class="element__button button-hover"></button>
+        </div>
+      </article>
+    </template>
+  
     <script src="./script.js"></script>
   </body>
 </html>
