@@ -35,12 +35,17 @@
         <button class="profile__add-button button-hover" type="button"></button>
       </section>
       <section class="elements" aria-label="Блок карточек">
-       <article class="element">
+        <article class="element">
           <img
             src="./images/Карачаевск.jpg"
             alt="Кирпичное строение на фоне гор"
             class="element__image"
           />
+          <button
+            class="element__delete-button button-hover"
+            type="button"
+            aria-label="Удалить"
+          ></button>
           <div class="element__item">
             <h2 class="element__title">Карачаевск</h2>
             <button
@@ -56,6 +61,11 @@
             alt="Величественнй Эльбрус вдалеке"
             class="element__image"
           />
+          <button
+            class="element__delete-button button-hover"
+            type="button"
+            aria-label="Удалить"
+          ></button>
           <div class="element__item">
             <h2 class="element__title">Гора Эльбрус</h2>
             <button
@@ -71,6 +81,11 @@
             alt="Горы, горы и еще раз горы"
             class="element__image"
           />
+          <button
+            class="element__delete-button button-hover"
+            type="button"
+            aria-label="Удалить"
+          ></button>
           <div class="element__item">
             <h2 class="element__title">Домбай</h2>
             <button
@@ -86,6 +101,11 @@
             alt="Величественнй Эльбрус вдалеке"
             class="element__image"
           />
+          <button
+            class="element__delete-button button-hover"
+            type="button"
+            aria-label="Удалить"
+          ></button>
           <div class="element__item">
             <h2 class="element__title">Гора Эльбрус</h2>
             <button
@@ -101,6 +121,11 @@
             alt="Горы, горы и еще раз горы"
             class="element__image"
           />
+          <button
+            class="element__delete-button button-hover"
+            type="button"
+            aria-label="Удалить"
+          ></button>
           <div class="element__item">
             <h2 class="element__title">Домбай</h2>
             <button
@@ -116,6 +141,11 @@
             alt="Кирпичное строение на фоне гор"
             class="element__image"
           />
+          <button
+            class="element__delete-button button-hover"
+            type="button"
+            aria-label="Удалить"
+          ></button>
           <div class="element__item">
             <h2 class="element__title">Карачаево-Черкессия</h2>
             <button
@@ -198,13 +228,14 @@
     <template id="card-template">
       <article class="element">
         <img class="element__image" />
+        <button class="element__delete-button button-hover"></button>
         <div class="element__item">
           <h2 class="element__title"></h2>
           <button class="element__button button-hover"></button>
         </div>
       </article>
     </template>
-  
+
     <script src="./script.js"></script>
   </body>
 </html>
