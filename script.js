@@ -42,7 +42,7 @@ const initialCards = [
 
 // Функции открытия-закрытия самого модального окна
 function openPopup(popupElement) {
-  popupElement.classList.add("popup_opened");
+ popupElement.classList.add("popup_opened");
 }
 
 function closePopup(popupElement) {
@@ -149,3 +149,24 @@ handleClick = (evt) => {
 
 // Добавляем обработчик
 deleteButton.forEach(item => item.addEventListener('click', handleClick));
+
+//------------------------------------------------------------Открытие попапа с картинкой--------------------------------------------------
+
+//Находиим изображение
+const imgElement = document.querySelectorAll('.element__image');
+const popupImage = document.querySelector('.popup__image');
+const closeButtonImage = document.querySelector('#close-button-img');
+
+//Открытие-Закрытия попапа с изображением по клику
+for(let i = 0; i < imgElement.length; i++) {
+  let img = imgElement[i];
+
+  img.addEventListener('click', () => {
+    openPopup(popupImage);
+  })};
+
+closeButtonImage.addEventListener('click', () => {
+  closePopup(popupImage);
+})
+
+//
