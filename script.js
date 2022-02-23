@@ -10,6 +10,7 @@ const formCards = document.querySelector('#form-cards');
 const nameInput = formElement.querySelector("#name");
 const jobInput = formElement.querySelector("#job");
 const cardTemplate = document.querySelector('#card-template').content;
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -99,12 +100,12 @@ function addCard(titleValue, linkValue) {
   cardElement.querySelector('.element__button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__button_active');
   })
-  cardElement.querySelector('.element__delete-button');
+  cardElement.querySelector('.element__delete-button').addEventListener('click', handleClick);
 
   elementsContainer.prepend(cardElement);
 }
 
-// Добавление крточки в контейнер
+// Обработчик "отправки" формы добавления карточки в контейнер
 function submitCardButton(evt) {
   evt.preventDefault();
 
@@ -135,3 +136,16 @@ initialCards.forEach(function (element) {
 
   elementsContainer.append(cardElement);
 })
+
+//------------------------------------------------------------Удаление карточки---------------------------------------------------
+
+// Выбираем кнопку удаления
+const deleteButton = document.querySelectorAll('.element__delete-button');
+
+// Функция удаления карточки
+handleClick = (evt) => {
+  evt.target.closest('.element').remove();
+}
+
+// Добавляем обработчик
+deleteButton.forEach(item => item.addEventListener('click', handleClick));
