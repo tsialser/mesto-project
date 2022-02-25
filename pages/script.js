@@ -10,7 +10,6 @@ const formCards = document.querySelector("#form-cards");
 const nameInput = formElement.querySelector("#name");
 const jobInput = formElement.querySelector("#job");
 const cardTemplate = document.querySelector("#card-template").content;
-
 const initialCards = [
   {
     name: "Архыз",
@@ -107,13 +106,10 @@ function addCard(titleValue, linkValue) {
     .querySelector(".element__delete-button")
     .addEventListener("click", handleClick);
 
-  //Открытие изображения для созданной карточки
-  cardElement
-    .querySelector(".element__image")
-    .addEventListener("click", (evt) => {
-      evt.preventDefault();
-      openImg(linkValue, titleValue);
-    });
+  //При клике на вновь созданную карточку открываем изображение
+  cardElement.querySelector(".element__image").addEventListener("click", () => {
+    openImg(linkValue, titleValue);
+  });
 
   elementsContainer.prepend(cardElement);
 
@@ -145,6 +141,8 @@ initialCards.forEach(function (element) {
   cardElement.querySelector(".element__image").src = element.link;
   cardElement.querySelector(".element__image").alt = element.name;
   cardElement.querySelector(".element__title").textContent = element.name;
+
+  // при клике на карточку открываем изображение
   cardElement
     .querySelector(".element__button")
     .addEventListener("click", function (evt) {
@@ -152,12 +150,9 @@ initialCards.forEach(function (element) {
     });
 
   // Открытие попапа с изображением
-  cardElement
-    .querySelector(".element__image")
-    .addEventListener("click", (evt) => {
-      evt.preventDefault();
-      openImg(element.link, element.name);
-    });
+  cardElement.querySelector(".element__image").addEventListener("click", () => {
+    openImg(element.link, element.name);
+  });
 
   elementsContainer.append(cardElement);
 });
