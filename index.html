@@ -34,135 +34,13 @@
         </div>
         <button class="profile__add-button button-hover" type="button"></button>
       </section>
-      <section class="elements" aria-label="Блок карточек">
-        <!--
-        <article class="element">
-          <img
-            src="./images/Карачаевск.jpg"
-            alt="Кирпичное строение на фоне гор"
-            class="element__image"
-          />
-          <button
-            class="element__delete-button button-hover"
-            type="button"
-            aria-label="Удалить"
-          ></button>
-          <div class="element__item">
-            <h2 class="element__title">Карачаевск</h2>
-            <button
-              class="element__button button-hover"
-              type="button"
-              aria-label="Нравится"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img
-            src="./images/Эльбрус.jpg"
-            alt="Величественнй Эльбрус вдалеке"
-            class="element__image"
-          />
-          <button
-            class="element__delete-button button-hover"
-            type="button"
-            aria-label="Удалить"
-          ></button>
-          <div class="element__item">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button
-              class="element__button button-hover"
-              type="button"
-              aria-label="Нравится"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img
-            src="./images/Домбаи.jpg"
-            alt="Горы, горы и еще раз горы"
-            class="element__image"
-          />
-          <button
-            class="element__delete-button button-hover"
-            type="button"
-            aria-label="Удалить"
-          ></button>
-          <div class="element__item">
-            <h2 class="element__title">Домбай</h2>
-            <button
-              class="element__button button-hover"
-              type="button"
-              aria-label="Нравится"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img
-            src="./images/Эльбрус-2.jpg"
-            alt="Величественнй Эльбрус вдалеке"
-            class="element__image"
-          />
-          <button
-            class="element__delete-button button-hover"
-            type="button"
-            aria-label="Удалить"
-          ></button>
-          <div class="element__item">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button
-              class="element__button button-hover"
-              type="button"
-              aria-label="Нравится"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img
-            src="./images/Домбаи-2.jpg"
-            alt="Горы, горы и еще раз горы"
-            class="element__image"
-          />
-          <button
-            class="element__delete-button button-hover"
-            type="button"
-            aria-label="Удалить"
-          ></button>
-          <div class="element__item">
-            <h2 class="element__title">Домбай</h2>
-            <button
-              class="element__button button-hover"
-              type="button"
-              aria-label="Нравится"
-            ></button>
-          </div>
-        </article>
-        <article class="element">
-          <img
-            src="./images/Карачаево-Ч.jpg"
-            alt="Кирпичное строение на фоне гор"
-            class="element__image"
-          />
-          <button
-            class="element__delete-button button-hover"
-            type="button"
-            aria-label="Удалить"
-          ></button>
-          <div class="element__item">
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button
-              class="element__button button-hover"
-              type="button"
-              aria-label="Нравится"
-            ></button>
-          </div>
-        </article>
-      --></section>
+      <section class="elements" aria-label="Блок карточек"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
     <!-- Форма редактирования профиля-->
-    <section class="popup popup__profile">
+    <section class="popup popup_type_profile">
       <div class="popup__container">
         <button
           type="button"
@@ -174,7 +52,7 @@
           <input
             type="text"
             class="popup__input"
-            placeholder="Жак-Ив Кусто"
+            placeholder="Имя"
             name="name"
             id="name"
             required
@@ -182,7 +60,7 @@
           <input
             type="text"
             class="popup__input"
-            placeholder="Исследователь океана"
+            placeholder="Профессия"
             name="job"
             id="job"
             required
@@ -194,7 +72,7 @@
       </div>
     </section>
     <!-- Форма добавления карточек-->
-    <section class="popup popup__cards">
+    <section class="popup popup_type_cards">
       <div class="popup__container">
         <button
           type="button"
@@ -226,7 +104,7 @@
       </div>
     </section>
     <!-- Попап с каартинкой-->
-    <section class="popup popup__image">
+    <section class="popup popup_type_image">
       <div class="popup__img-container">
         <button
           class="popup__close-button button-hover"
@@ -249,6 +127,7 @@
       </article>
     </template>
 
-    <script src="./pages/script.js"></script>
+    <script src="./scripts/initial-cards.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
