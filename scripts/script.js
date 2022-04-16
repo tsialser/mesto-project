@@ -8,12 +8,14 @@ const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const addCardButton = document.querySelector(".profile__add-button");
 const closeCardButton = document.querySelector("#close-button-cards");
-const formProfile = document.querySelector("#form-profile");
-const formCards = document.querySelector("#form-cards");
-const title = document.querySelector("#title");
-const link = document.querySelector("#link");
-const nameInput = formProfile.querySelector("#name");
-const jobInput = formProfile.querySelector("#job");
+const formProfile = document.forms.editProfile;
+const formCards = document.forms.addCard;
+const title = formCards.elements.title;
+const link = formCards.elements.link;
+const nameInput = formProfile.elements.name;
+const jobInput = formProfile.elements.job;
+const submitButtonProfile = document.querySelector("#profile-submit-button");
+const submitButtonCard = document.querySelector("#card-submit-button");
 const cardTemplate = document.querySelector("#card-template").content;
 const closeImgPopup = document.querySelector("#close-button-img");
 const main = document.querySelector(".main");
@@ -111,10 +113,36 @@ function popupImage(linkImg, titleImg) {
   openImgPopup.querySelector(".popup__title-img").textContent = titleImg;
 }
 
-//Открытие формы добавления карточек
+// Функция состояния кнопки сабмита редактирования профиля
+function setSubmitButtonProfile(isFormValid) {
+  if (isFormValid) {
+    submitButtonProfile.removeAttribute("disabled");
+    submitButtonProfile.classList.remove("popup__submit-button_type_disabled");
+    submitButtonProfile.classList.add("button-hover");
+  } else {
+    submitButtonProfile.setAttribute("disabled", true);
+    submitButtonProfile.classList.add("popup__submit-button_type_disabled");
+    submitButtonProfile.classList.remove("button-hover");
+  }
+}
+
+// Функция состояния кнопки сабмита редактирования карточек
+function setSubmitButtonCards(isFormValid) {
+  if (isFormValid) {
+    submitButtonCard.removeAttribute("disabled");
+    submitButtonCard.classList.remove("popup__submit-button_type_disabled");
+    submitButtonCard.classList.add("button-hover");
+  } else {
+    submitButtonCard.setAttribute("disabled", true);
+    submitButtonCard.classList.add("popup__submit-button_type_disabled");
+    submitButtonCard.classList.remove("button-hover");
+  }
+}
+
+// Открытие формы добавления карточек
 addCardButton.addEventListener("click", () => {
   openPopup(popupCards);
-}); 
+});
 
 // Открытие формы редактирования профиля
 btnEditProfile.addEventListener("click", () => {
@@ -135,6 +163,7 @@ formCards.addEventListener("submit", function (evt) {
   );
   formCards.reset();
 
+  setSubmitButtonCards(false);
   closePopup(popupCards);
 });
 
@@ -148,3 +177,13 @@ popup.forEach((element) => {
   element.addEventListener("click", overlayClose);
 });
 
+// Валидация формы редактирования профиля
+formProfile.addEventListener("input", function (evt) {
+  const isValid = nameInput.value.length > 0 && jobInput.value.length > 0;
+  setSubmitButtonProfile(isValid);
+});
+// Валидация формы карточек с изображениями
+formCards.addEventListener("input", function (evt) {
+  const isValid = title.value.length > 0 && link.value.length > 0;
+  setSubmitButtonCards(isValid);
+});
