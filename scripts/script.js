@@ -1,3 +1,4 @@
+const popup = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupCards = document.querySelector(".popup_type_cards");
 const openImgPopup = document.querySelector(".popup_type_image");
@@ -17,14 +18,34 @@ const cardTemplate = document.querySelector("#card-template").content;
 const closeImgPopup = document.querySelector("#close-button-img");
 const main = document.querySelector(".main");
 const elementsContainer = main.querySelector(".elements");
+const key = "Escape";
 
 // Функции открытия-закрытия самого модального окна
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
+  document.addEventListener("keydown", escClose);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydowm", escClose);
+}
+
+// Функция закрытия по нажатию на Esc
+function escClose(evt) {
+  if (evt.key === key) {
+    const openPopup = document.querySelector(".popup_opened");
+    closePopup(openPopup);
+  }
+}
+
+// Функция закрытия по клику на Оверлей и кнопке закрыть
+function overlayClose(evt) {
+  const overlay = evt.target.classList.contains("popup");
+  const closeButton = evt.target.classList.contains("popup__close-button");
+  if (overlay || closeButton) {
+    closePopup(evt.currentTarget);
+  }
 }
 
 // Функция добавления информации в попап профиля
@@ -90,22 +111,15 @@ function popupImage(linkImg, titleImg) {
   openImgPopup.querySelector(".popup__title-img").textContent = titleImg;
 }
 
-//Открытие-Закрытие формы добавления карточек
+//Открытие формы добавления карточек
 addCardButton.addEventListener("click", () => {
   openPopup(popupCards);
-});
-closeCardButton.addEventListener("click", () => {
-  closePopup(popupCards);
-});
+}); 
 
-// Открытие-закрытие формы редактирования профиля
+// Открытие формы редактирования профиля
 btnEditProfile.addEventListener("click", () => {
   addFormValue();
   openPopup(popupProfile);
-});
-
-closeButtonProfile.addEventListener("click", () => {
-  closePopup(popupProfile);
 });
 
 // Прикрепляем обработчик к форме профиля:
@@ -124,12 +138,13 @@ formCards.addEventListener("submit", function (evt) {
   closePopup(popupCards);
 });
 
-//6 карточек из коробки
+// 6 карточек из коробки
 initialCards.forEach((card) => {
   addCard(elementsContainer, createCard(card.name, card.link));
 });
 
-// Закрытие попапа с изобраением
-closeImgPopup.addEventListener("click", () => {
-  closePopup(openImgPopup);
+// Закрытие попапов
+popup.forEach((element) => {
+  element.addEventListener("click", overlayClose);
 });
+
