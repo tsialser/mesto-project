@@ -114,32 +114,6 @@ function popupImage(linkImg, titleImg) {
   openImgPopup.querySelector(".popup__title-img").textContent = titleImg;
 }
 
-// Функция состояния кнопки сабмита редактирования профиля
-function setSubmitButtonProfile(isFormValid) {
-  if (isFormValid) {
-    submitButtonProfile.removeAttribute("disabled");
-    submitButtonProfile.classList.remove("popup__submit-button_type_disabled");
-    submitButtonProfile.classList.add("button-hover");
-  } else {
-    submitButtonProfile.setAttribute("disabled", true);
-    submitButtonProfile.classList.add("popup__submit-button_type_disabled");
-    submitButtonProfile.classList.remove("button-hover");
-  }
-}
-
-// Функция состояния кнопки сабмита редактирования карточек
-function setSubmitButtonCards(isFormValid) {
-  if (isFormValid) {
-    submitButtonCard.removeAttribute("disabled");
-    submitButtonCard.classList.remove("popup__submit-button_type_disabled");
-    submitButtonCard.classList.add("button-hover");
-  } else {
-    submitButtonCard.setAttribute("disabled", true);
-    submitButtonCard.classList.add("popup__submit-button_type_disabled");
-    submitButtonCard.classList.remove("button-hover");
-  }
-}
-
 // Открытие формы добавления карточек
 addCardButton.addEventListener("click", () => {
   openPopup(popupCards);
@@ -179,22 +153,7 @@ popup.forEach((element) => {
   element.addEventListener("click", overlayClose);
 });
 
-// Валидация формы редактирования профиля
-formProfile.addEventListener("input", function (evt) {
-  const isValid = nameInput.value.length > 0 && jobInput.value.length > 0;
-  setSubmitButtonProfile(isValid);
-});
-// Валидация формы карточек с изображениями
-formCards.addEventListener("input", function (evt) {
-  const isValid = title.value.length > 0 && link.value.length > 0;
-  setSubmitButtonCards(isValid);
-});
-
-//----------------------------- Валидация ---------------------------------------------
-const formElement = document.querySelector('.popup__form');
-const formInput = formElement.querySelector('.popup__input');
-
-
+//----------------------------- Валидация формы---------------------------------------------
 //Функция, которая добавляет класс с ошибкой
 const showError = (formElement, formInput, errorMessage) => {
   //Находим элемент ошибки внутри самой функции
@@ -229,15 +188,21 @@ const checkInputValidity = (formElement, formInput) => {
   }
 }
 
-const setEventListener = (formElement) => {
+const setEventListeners = (formElement) => {
   //Находим все поля внутри формы, сделаем из них массиы Array.from
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  //Найдем в текущей форме кнопку отправки
+  const buttonElement = formElement.querySelector('.popup__submit-button');
+  //Вызовем toggleButtonState, чтобы не ждать ввода данных в поле
+  toggleButtonStste(inputList, buttonElement);
   //Обойдем все элементы полученной коллекции
   inputList.forEach((formInput) => {
     //Каждому полю добавим обработчик событий input
     formInput.addEventListener('input', () => {
       //Внутри колбека вызовем checkInputValidity, передав ей форму и проверяемый элемент
       checkInputValidity(formElement, formInput);
+      //Вызовем toggleButtonState и передадим ей массив полей и кнопку
+      toggleButtonStste(inputList, buttonElement);
     });
   });
 };
@@ -252,9 +217,34 @@ const enableValidation = () => {
       evt.preventDefault();
     });
     //Для каждой формы вызовем функцию setEventListener, передав ей элемент формы
-    setEventListener(formElement);
+    setEventListeners(formElement);
   });
 };
 
+//Функция принимает массив полей
+const hasInvalidInput = (inputList) => {
+  //Проходим по этому массиву методом some
+  return inputList.some((formInput) =>  {
+    //Если поле не валидно, колбек вернет true, обход массива прекратится и вся функция hasInvalidInput вернет true
+    return !formInput.validity.valid;
+  });
+};
+
+//Функция принимает массив полей ввода и элемент кнопки, сщстояние которой нужно менять
+const toggleButtonStste = (inputList, buttonElement) => {
+  //Если есть хотя бы один невалидный input
+  if(hasInvalidInput(inputList)) {
+    //Сделаем кнопку неактивной
+    buttonElement.classList.add('popup__submit-button_type_disabled');
+    buttonElement.classList.remove('button-hover');
+    buttonElement.setAttribute("disabled", true);
+  } else {
+    //Иначе сделаем кнопку активной
+    buttonElement.classList.remove('popup__submit-button_type_disabled');
+    buttonElement.classList.add('button-hover');
+    buttonElement.removeAttribute("disabled");
+  }
+};
 //Вызовем функцию
 enableValidation();
+
