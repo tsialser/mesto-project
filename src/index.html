@@ -7,17 +7,17 @@
     <meta name="keywords" content="HTML, CSS, Grid, Figma, JS" />
     <meta name="author" content="Алексей Цимбал" />
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!--<link rel="stylesheet" href="./pages/index.css" />-->
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="Логотип Место" class="header__logo" />
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип Место" class="header__logo" />
     </header>
     <main class="main">
       <section class="profile">
         <div class="profile__card">
           <img
-            src="./images/avatar.jpeg"
+            src="<%=require('./images/avatar.jpeg')%>"
             alt="Аватарка профиля"
             class="profile__avatar"
           />
@@ -153,6 +153,5 @@
       </article>
     </template>
 
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
