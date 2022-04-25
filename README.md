@@ -11,6 +11,8 @@
 * Grid
 * Flex
 * JS
+* Модули
+* Webpack
 
 **Figma**
 
