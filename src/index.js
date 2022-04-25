@@ -1,3 +1,4 @@
+import './pages/index.css';
 import {
   elementsContainer,
   formCards,
@@ -7,16 +8,16 @@ import {
   formProfile,
   popup,
   popupProfile,
-} from "../src/components/constants.js";
+} from "./components/constants.js";
 
-import { addCard, createCard } from "../src/components/card.js";
+import { addCard, createCard } from "./components/card.js";
 import {
   openPopup,
   closePopup,
   overlayClose,
-} from "../src/components/modal.js";
-import { enableValidation } from "../src/components/validate.js";
-import { handleProfileSubmit, addFormValue } from "../src/components/utils.js";
+} from "./components/modal.js";
+import { enableValidation } from "./components/validate.js";
+import { handleProfileSubmit, addFormValue } from "./components/utils.js";
 
 // Открытие формы добавления карточек
 addCardButton.addEventListener("click", () => {
