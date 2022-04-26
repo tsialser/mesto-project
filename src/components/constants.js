@@ -41,6 +41,8 @@ export const btnEditProfile = document.querySelector(".profile__edit-button");
 export const closeButtonProfile = document.querySelector(
   "#close-button-profile"
 );
+export const popupImg = document.querySelector(".popup__img");
+export const popupImgTitle = openImgPopup.querySelector(".popup__title-img");
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
 export const addCardButton = document.querySelector(".profile__add-button");
