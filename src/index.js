@@ -6,7 +6,7 @@ import {
   addCardButton,
   btnEditProfile,
   formProfile,
-  popup,
+  popups,
   popupProfile,
 } from "./components/constants.js";
 
@@ -48,7 +48,7 @@ formCards.addEventListener("submit", function (evt) {
 });
 
 // Закрытие попапов
-popup.forEach((element) => {
+popups.forEach((element) => {
   element.addEventListener("click", overlayClose);
 });
 

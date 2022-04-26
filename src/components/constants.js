@@ -25,7 +25,7 @@ export const initialCards = [
   },
 ];
 
-export const popup = document.querySelectorAll(".popup");
+export const popups = document.querySelectorAll(".popup");
 export const popupProfile = document.querySelector(".popup_type_profile");
 export const popupCards = document.querySelector(".popup_type_cards");
 export const openImgPopup = document.querySelector(".popup_type_image");
