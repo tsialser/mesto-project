@@ -25,6 +25,14 @@ export const initialCards = [
   },
 ];
 
+export const settings = {
+  formElement: '.popup__form',
+  formInput: '.popup__input',
+  submitButton: '.popup__submit-button',
+  inputError: 'popup__input-error_active',
+  error: 'popup__input_type_error',
+};
+
 export const popups = document.querySelectorAll(".popup");
 export const popupProfile = document.querySelector(".popup_type_profile");
 export const popupCards = document.querySelector(".popup_type_cards");

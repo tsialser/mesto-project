@@ -1,5 +1,6 @@
 import './pages/index.css';
 import {
+  settings,
   elementsContainer,
   formCards,
   popupCards,
@@ -53,4 +54,4 @@ popups.forEach((element) => {
 });
 
 //Валидация
-enableValidation();
+enableValidation(settings);
