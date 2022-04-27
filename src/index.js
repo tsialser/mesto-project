@@ -1,12 +1,13 @@
-import './pages/index.css';
+import "./pages/index.css";
 import {
+  settings,
   elementsContainer,
   formCards,
   popupCards,
   addCardButton,
   btnEditProfile,
   formProfile,
-  popup,
+  popups,
   popupProfile,
 } from "./components/constants.js";
 
@@ -15,17 +16,20 @@ import {
   openPopup,
   closePopup,
   overlayClose,
+  reset,
 } from "./components/modal.js";
 import { enableValidation } from "./components/validate.js";
 import { handleProfileSubmit, addFormValue } from "./components/utils.js";
 
 // Открытие формы добавления карточек
 addCardButton.addEventListener("click", () => {
+  reset(formCards);
   openPopup(popupCards);
 });
 
 // Открытие формы редактирования профиля
 btnEditProfile.addEventListener("click", () => {
+  reset(formProfile);
   addFormValue();
   openPopup(popupProfile);
 });
@@ -41,16 +45,13 @@ formCards.addEventListener("submit", function (evt) {
     elementsContainer,
     createCard(formCards.title.value, formCards.link.value)
   );
-  formCards.reset();
-
-  //setSubmitButtonCards(false);
   closePopup(popupCards);
 });
 
 // Закрытие попапов
-popup.forEach((element) => {
+popups.forEach((element) => {
   element.addEventListener("click", overlayClose);
 });
 
 //Валидация
-enableValidation();
+enableValidation(settings);

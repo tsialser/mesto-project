@@ -25,7 +25,17 @@ export const initialCards = [
   },
 ];
 
-export const popup = document.querySelectorAll(".popup");
+export const settings = {
+  formElement: ".popup__form",
+  formInput: ".popup__input",
+  submitButton: ".popup__submit-button",
+  submitButtonDisabled: "popup__submit-button_type_disabled",
+  buttonHover: "button-hover",
+  inputError: "popup__input-error_active",
+  error: "popup__input_type_error",
+};
+
+export const popups = document.querySelectorAll(".popup");
 export const popupProfile = document.querySelector(".popup_type_profile");
 export const popupCards = document.querySelector(".popup_type_cards");
 export const openImgPopup = document.querySelector(".popup_type_image");
@@ -33,6 +43,8 @@ export const btnEditProfile = document.querySelector(".profile__edit-button");
 export const closeButtonProfile = document.querySelector(
   "#close-button-profile"
 );
+export const popupImg = document.querySelector(".popup__img");
+export const popupImgTitle = openImgPopup.querySelector(".popup__title-img");
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
 export const addCardButton = document.querySelector(".profile__add-button");
