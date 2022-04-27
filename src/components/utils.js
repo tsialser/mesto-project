@@ -3,7 +3,7 @@ import {
   profileSubtitle,
   nameInput,
   jobInput,
-  popupProfile,
+  popupProfile
 } from "./constants.js";
 import { closePopup } from "./modal.js";
 

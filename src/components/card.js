@@ -3,15 +3,18 @@ import {
   initialCards,
   elementsContainer,
   openImgPopup,
+  popupImg,
+  popupImgTitle
 } from "./constants.js";
 import { openPopup } from "./modal.js";
 
 // Создание карточки
 export function createCard(titleValue, linkValue) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+  const cardImage = cardElement.querySelector('.element__image');
 
-  cardElement.querySelector(".element__image").src = linkValue;
-  cardElement.querySelector(".element__image").alt = titleValue;
+  cardImage.src = linkValue;
+  cardImage.alt = titleValue;
 
   cardElement.querySelector(".element__title").textContent = titleValue;
 
@@ -28,7 +31,7 @@ export function createCard(titleValue, linkValue) {
     .addEventListener("click", handleDeleteClick);
 
   //При клике на вновь созданную карточку открываем изображение
-  cardElement.querySelector(".element__image").addEventListener("click", () => {
+  cardImage.addEventListener("click", () => {
     popupImage(linkValue, titleValue);
   });
 
@@ -53,7 +56,7 @@ initialCards.forEach((card) => {
 // Функция открытия Изображения
 function popupImage(linkImg, titleImg) {
   openPopup(openImgPopup);
-  openImgPopup.querySelector(".popup__img").src = linkImg;
-  openImgPopup.querySelector(".popup__img").alt = titleImg;
-  openImgPopup.querySelector(".popup__title-img").textContent = titleImg;
+  popupImg.src = linkImg;
+  popupImg.alt = titleImg;
+  popupImgTitle.textContent = titleImg;
 }

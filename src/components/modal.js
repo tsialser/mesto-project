@@ -1,4 +1,5 @@
-import { key } from "./constants.js";
+import { key, settings } from "./constants.js";
+import { toggleButtonState } from "./validate.js";
 
 // Функции открытия-закрытия самого модального окна
 export function openPopup(popupElement) {
@@ -8,7 +9,7 @@ export function openPopup(popupElement) {
 
 export function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
-  document.removeEventListener("keydowm", escClose);
+  document.removeEventListener("keydown", escClose);
 }
 
 // Функция закрытия по нажатию на Esc
@@ -26,4 +27,16 @@ export function overlayClose(evt) {
   if (overlay || closeButton) {
     closePopup(evt.currentTarget);
   }
+}
+
+// Сброс
+function buttonState(form) {
+  const submitButton = form.querySelector(settings.submitButton);
+  const inputList = Array.from(form.querySelectorAll(settings.formInput));
+  toggleButtonState(inputList, submitButton, settings);
+}
+
+export function reset(form) {
+  form.reset();
+  buttonState(form);
 }
