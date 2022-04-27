@@ -26,11 +26,13 @@ export const initialCards = [
 ];
 
 export const settings = {
-  formElement: '.popup__form',
-  formInput: '.popup__input',
-  submitButton: '.popup__submit-button',
-  inputError: 'popup__input-error_active',
-  error: 'popup__input_type_error',
+  formElement: ".popup__form",
+  formInput: ".popup__input",
+  submitButton: ".popup__submit-button",
+  submitButtonDisabled: "popup__submit-button_type_disabled",
+  buttonHover: "button-hover",
+  inputError: "popup__input-error_active",
+  error: "popup__input_type_error",
 };
 
 export const popups = document.querySelectorAll(".popup");

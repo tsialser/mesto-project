@@ -1,3 +1,5 @@
+import { settings } from "./constants.js";
+
 //Функция, которая добавляет класс с ошибкой
 const showError = (formElement, formInput, errorMessage, settings) => {
   //Находим элемент ошибки внутри самой функции
@@ -34,11 +36,13 @@ const checkInputValidity = (formElement, formInput, settings) => {
 
 const setEventListeners = (formElement, settings) => {
   //Находим все поля внутри формы, сделаем из них массиы Array.from
-  const inputList = Array.from(formElement.querySelectorAll(settings.formInput));
+  const inputList = Array.from(
+    formElement.querySelectorAll(settings.formInput)
+  );
   //Найдем в текущей форме кнопку отправки
   const buttonElement = formElement.querySelector(settings.submitButton);
   //Вызовем toggleButtonState, чтобы не ждать ввода данных в поле
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, settings);
   //Обойдем все элементы полученной коллекции
   inputList.forEach((formInput) => {
     //Каждому полю добавим обработчик событий input
@@ -46,7 +50,7 @@ const setEventListeners = (formElement, settings) => {
       //Внутри колбека вызовем checkInputValidity, передав ей форму и проверяемый элемент
       checkInputValidity(formElement, formInput, settings);
       //Вызовем toggleButtonState и передадим ей массив полей и кнопку
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, settings);
     });
   });
 };
@@ -74,18 +78,18 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-//Функция принимает массив полей ввода и элемент кнопки, сщстояние которой нужно менять
-const toggleButtonState = (inputList, buttonElement) => {
+//Функция принимает массив полей ввода и элемент кнопки, состояние которой нужно менять
+export function toggleButtonState(inputList, buttonElement, settings) {
   //Если есть хотя бы один невалидный input
   if (hasInvalidInput(inputList)) {
     //Сделаем кнопку неактивной
-    buttonElement.classList.add("popup__submit-button_type_disabled");
-    buttonElement.classList.remove("button-hover");
-    buttonElement.setAttribute("disabled", true);
+    buttonElement.classList.add(settings.submitButtonDisabled);
+    buttonElement.classList.remove(settings.buttonHover);
+    buttonElement.setAttribute("disabled", "");
   } else {
     //Иначе сделаем кнопку активной
-    buttonElement.classList.remove("popup__submit-button_type_disabled");
-    buttonElement.classList.add("button-hover");
+    buttonElement.classList.remove(settings.submitButtonDisabled);
+    buttonElement.classList.add(settings.buttonHover);
     buttonElement.removeAttribute("disabled");
   }
-};
+}
