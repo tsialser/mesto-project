@@ -12,7 +12,7 @@ import {
   popupProfile,
 } from "./components/constants.js";
 
-import { addCard, createCard, loadProjects } from "./components/card.js";
+import { addCard, createCard } from "./components/card.js";
 import {
   openPopup,
   closePopup,
@@ -21,6 +21,7 @@ import {
 } from "./components/modal.js";
 import { enableValidation } from "./components/validate.js";
 import { handleProfileSubmit, addFormValue } from "./components/utils.js";
+import { getCards } from "./components/api.js"
 
 // Открытие формы добавления карточек
 addCardButton.addEventListener("click", () => {
@@ -57,3 +58,13 @@ popups.forEach((element) => {
 //Валидация
 enableValidation(settings);
 
+getCards()
+  .then((cards) => {
+    cards.forEach(function(card) {
+      const createdCard = createCard(
+        card.link,
+        card.name
+      )
+      elementsContainer.append(createdCard);
+    })
+  })

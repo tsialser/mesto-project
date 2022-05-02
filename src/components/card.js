@@ -8,15 +8,16 @@ import {
 } from "./constants.js";
 import { openPopup } from "./modal.js";
 
+
 // Создание карточки
-export function createCard(titleValue, linkValue) {
+export function createCard(link, name,) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
 
-  cardImage.src = linkValue;
-  cardImage.alt = titleValue;
+  cardImage.src = link;
+  cardImage.alt = name;
 
-  cardElement.querySelector(".element__title").textContent = titleValue;
+  cardElement.querySelector(".element__title").textContent = name;
 
   //Лайк
   cardElement
@@ -32,7 +33,7 @@ export function createCard(titleValue, linkValue) {
 
   //При клике на вновь созданную карточку открываем изображение
   cardImage.addEventListener("click", () => {
-    popupImage(linkValue, titleValue);
+    popupImage(link, name);
   });
 
   return cardElement;

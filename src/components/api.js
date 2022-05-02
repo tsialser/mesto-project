@@ -22,6 +22,14 @@ export const getUserInformation = res => {
     .then(responseCheck);
 }
 
+export const getCards = res => {
+    return fetch(`${config.baseUrl}/cards`, {
+        method: 'GET',
+        headers: config.headers
+    })
+    .then(responseCheck);
+    console.log(res);
+}
 /*
 export const getCards = res => {
      fetch(`${config.baseUrl}/cards`, {

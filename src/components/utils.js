@@ -11,7 +11,6 @@ import { getUserInformation } from "./api.js";
 
 getUserInformation()
   .then((data) => {
-    console.log(data);
      profileTitle.textContent = data.name;
      profileSubtitle.textContent = data.about;
      profileAvatar.src = data.avatar;
