@@ -47,11 +47,12 @@ export function addCard(container, cardElement) {
 export function handleDeleteClick(evt) {
   evt.target.closest(".element").remove();
 }
-
+/*
 // 6 карточек из коробки
 initialCards.forEach((card) => {
   addCard(elementsContainer, createCard(card.name, card.link));
 });
+*/
 
 // Функция открытия Изображения
 function popupImage(linkImg, titleImg) {

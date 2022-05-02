@@ -1,4 +1,5 @@
 import "./pages/index.css";
+
 import {
   settings,
   elementsContainer,
@@ -11,7 +12,7 @@ import {
   popupProfile,
 } from "./components/constants.js";
 
-import { addCard, createCard } from "./components/card.js";
+import { addCard, createCard, loadProjects } from "./components/card.js";
 import {
   openPopup,
   closePopup,
@@ -33,10 +34,10 @@ btnEditProfile.addEventListener("click", () => {
   addFormValue();
   openPopup(popupProfile);
 });
-
+/*
 // Прикрепляем обработчик к форме профиля:
 formProfile.addEventListener("submit", handleProfileSubmit);
-
+*/
 // Создаем карточку с изображением и прикрепляем к обработчику
 formCards.addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -55,3 +56,4 @@ popups.forEach((element) => {
 
 //Валидация
 enableValidation(settings);
+
