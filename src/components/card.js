@@ -1,23 +1,46 @@
 import {
+  title,
+  link,
+  popupCards,
   cardTemplate,
-  initialCards,
   elementsContainer,
   openImgPopup,
   popupImg,
   popupImgTitle
 } from "./constants.js";
-import { openPopup } from "./modal.js";
+import { openPopup, closePopup } from "./modal.js";
+import { addNewCard } from "./api.js";
 
+export function handleCardSubmit(evt) {
+  evt.preventDefault();
+
+    addNewCard({
+      link: link.value,
+      name: title.value,
+      
+    })
+      .then((data) => {
+        const card = createCard(
+          data.link,
+          data.name
+        );
+        closePopup(popupCards);
+        elementsContainer.prepend(card);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+    }
 
 // Создание карточки
-export function createCard(link, name,) {
+export function createCard(link, title) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
+  const cardTitle = cardElement.querySelector(".element__title");
 
   cardImage.src = link;
-  cardImage.alt = name;
-
-  cardElement.querySelector(".element__title").textContent = name;
+  cardImage.alt = title;
+  cardTitle.textContent = title;
 
   //Лайк
   cardElement
@@ -33,27 +56,16 @@ export function createCard(link, name,) {
 
   //При клике на вновь созданную карточку открываем изображение
   cardImage.addEventListener("click", () => {
-    popupImage(link, name);
+    popupImage(link, title);
   });
 
   return cardElement;
 }
 
-// Добавление карточек
-export function addCard(container, cardElement) {
-  container.prepend(cardElement);
-}
-
 // Функция удаления карточки
-export function handleDeleteClick(evt) {
+function handleDeleteClick(evt) {
   evt.target.closest(".element").remove();
 }
-/*
-// 6 карточек из коробки
-initialCards.forEach((card) => {
-  addCard(elementsContainer, createCard(card.name, card.link));
-});
-*/
 
 // Функция открытия Изображения
 function popupImage(linkImg, titleImg) {
