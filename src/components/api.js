@@ -34,11 +34,16 @@ export const editProfile = newProfile => {
     return fetch(`${config.baseUrl}/users/me`, {
         method: 'PATCH',
         headers: config.headers,
-        body: JSON.stringify(newProfile),
+        body: JSON.stringify(newProfile)
     })
     .then(responseCheck);
 };
 
-/*
-export const addCard = () => {};
-export const deleteCard = () => {};*/
+export const addNewCard = cardData => {
+    return fetch(`${config.baseUrl}/cards`, {
+        method: 'POST',
+        headers: config.headers,
+        body: JSON.stringify(cardData)
+    })
+    .then(responseCheck);
+}

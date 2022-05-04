@@ -1,4 +1,8 @@
 import {
+  title,
+  link,
+  formCards,
+  popupCards,
   cardTemplate,
   initialCards,
   elementsContainer,
@@ -6,18 +10,42 @@ import {
   popupImg,
   popupImgTitle
 } from "./constants.js";
-import { openPopup } from "./modal.js";
+import { openPopup, closePopup } from "./modal.js";
+import { getCards, addNewCard } from "./api.js";
+
+export function handleCardSubmit(evt) {
+  evt.preventDefault();
+/*
+  addCard(
+    elementsContainer,
+    createCard(formCards.title.value, formCards.link.value)
+  );*/
+  addNewCard({
+    name: title.value,
+    link: link.value
+  })
+    .then((data) => {
+      const card = createCard(
+        data.name,
+        data.link
+      )
+      closePopup(popupCards);
+    })
+}
+
+
 
 
 // Создание карточки
-export function createCard(link, name,) {
+export function createCard(name, link) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
+  const cardTitle = cardElement.querySelector(".element__title");
 
-  cardImage.src = link;
-  cardImage.alt = name;
+  cardImage.src = link.value;
+  cardImage.textContent = name.value;
+  cardTitle.textContent = name.value;
 
-  cardElement.querySelector(".element__title").textContent = name;
 
   //Лайк
   cardElement

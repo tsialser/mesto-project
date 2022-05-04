@@ -12,10 +12,9 @@ import {
   popupProfile,
 } from "./components/constants.js";
 
-import { addCard, createCard } from "./components/card.js";
+import { createCard, handleCardSubmit } from "./components/card.js";
 import {
   openPopup,
-  closePopup,
   overlayClose,
   reset,
 } from "./components/modal.js";
@@ -39,16 +38,8 @@ btnEditProfile.addEventListener("click", () => {
 // Прикрепляем обработчик к форме профиля:
 formProfile.addEventListener("submit", handleProfileSubmit);
 
-// Создаем карточку с изображением и прикрепляем к обработчику
-formCards.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-
-  addCard(
-    elementsContainer,
-    createCard(formCards.title.value, formCards.link.value)
-  );
-  closePopup(popupCards);
-});
+// Прикрепляем обработчик к форме карточки
+formCards.addEventListener("submit", handleCardSubmit);
 
 // Закрытие попапов
 popups.forEach((element) => {
@@ -59,12 +50,13 @@ popups.forEach((element) => {
 enableValidation(settings);
 
 getCards()
-  .then((cards) => {
-    cards.forEach(function(card) {
-      const createdCard = createCard(
-        card.link,
-        card.name
-      )
-      elementsContainer.append(createdCard);
-    })
+.then((cards) => {
+  cards.forEach(function(card) {
+    const createdCard = createCard(
+      card.link,
+      card.name
+    )
+    elementsContainer.append(createdCard);
   })
+})
+  
