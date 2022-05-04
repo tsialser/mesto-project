@@ -22,7 +22,7 @@ export function handleCardSubmit(evt) {
       .then((data) => {
         const card = createCard(
           data.link,
-          data.name
+          data.name,
         );
         closePopup(popupCards);
         elementsContainer.prepend(card);
@@ -33,21 +33,24 @@ export function handleCardSubmit(evt) {
     }
 
 // Создание карточки
-export function createCard(link, title) {
+export function createCard(link, title, likes = []) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
   const cardTitle = cardElement.querySelector(".element__title");
+  const cardLike = cardElement.querySelector(".element__button");
+  const cardCount = cardElement.querySelector(".element__like-count");
+  let count = 0;
 
   cardImage.src = link;
   cardImage.alt = title;
   cardTitle.textContent = title;
+  cardCount.textContent = likes;
 
   //Лайк
-  cardElement
-    .querySelector(".element__button")
-    .addEventListener("click", function (evt) {
+    cardLike.addEventListener("click", function (evt) {
       evt.target.classList.toggle("element__button_active");
     });
+
 
   //Удаление
   cardElement

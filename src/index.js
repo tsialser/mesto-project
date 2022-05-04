@@ -54,8 +54,10 @@ getCards()
   cards.forEach(function(card) {
     const createdCard = createCard(
       card.link,
-      card.name
+      card.name,
+      card.likes.length
     )
+    console.log(card.likes.length);
     elementsContainer.append(createdCard);
   })
 })
