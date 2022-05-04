@@ -28,16 +28,17 @@ export const getCards = res => {
         headers: config.headers
     })
     .then(responseCheck);
-    console.log(res);
 }
-/*
-export const getCards = res => {
-     fetch(`${config.baseUrl}/cards`, {
-        method: "GET",
+
+export const editProfile = newProfile => {
+    return fetch(`${config.baseUrl}/users/me`, {
+        method: 'PATCH',
         headers: config.headers,
-    });
-    return responseCheck(res); 
+        body: JSON.stringify(newProfile),
+    })
+    .then(responseCheck);
 };
 
+/*
 export const addCard = () => {};
 export const deleteCard = () => {};*/
