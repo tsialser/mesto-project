@@ -14,22 +14,6 @@ function responseCheck(res) {
     }
 }
 
-export const getUserInformation = res => {
-    return fetch(`${config.baseUrl}/users/me`, {
-        method: 'GET',
-        headers: config.headers
-    })
-    .then(responseCheck);
-}
-
-export const getCards = res => {
-    return fetch(`${config.baseUrl}/cards`, {
-        method: 'GET',
-        headers: config.headers
-    })
-    .then(responseCheck);
-}
-
 export const editProfile = newProfile => {
     return fetch(`${config.baseUrl}/users/me`, {
         method: 'PATCH',
@@ -44,6 +28,31 @@ export const addNewCard = cardData => {
         method: 'POST',
         headers: config.headers,
         body: JSON.stringify(cardData)
+    })
+    .then(responseCheck);
+}
+
+export const getUserInformation = () => {
+    return fetch(`${config.baseUrl}/users/me`, {
+        method: 'GET',
+        headers: config.headers
+    })
+    .then(responseCheck);
+}
+
+
+export const getCards = () => {
+    return fetch(`${config.baseUrl}/cards`, {
+        method: 'GET',
+        headers: config.headers
+    })
+    .then(responseCheck);
+}
+
+export const deleteCard = (cardID) => {
+    return fetch(`${config.baseUrl}/cards/${cardID}`, {
+        method: 'DELETE',
+        headers: config.headers,
     })
     .then(responseCheck);
 }
