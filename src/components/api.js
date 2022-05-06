@@ -6,7 +6,7 @@ const config = {
   },
 };
 
-function responseCheck(res) {
+function checkResponse(res) {
   if (res.ok) {
     return res.json();
   } else {
@@ -19,7 +19,7 @@ export const editProfile = (newProfile) => {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify(newProfile),
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const addNewCard = (cardData) => {
@@ -27,42 +27,42 @@ export const addNewCard = (cardData) => {
     method: "POST",
     headers: config.headers,
     body: JSON.stringify(cardData),
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const getUserInformation = () => {
   return fetch(`${config.baseUrl}/users/me`, {
     method: "GET",
     headers: config.headers,
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const getCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     method: "GET",
     headers: config.headers,
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const deleteCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const likeCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: "PUT",
     headers: config.headers,
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const unlikeCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
 
 export const updateAvatar = (avatar) => {
@@ -70,5 +70,5 @@ export const updateAvatar = (avatar) => {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify(avatar),
-  }).then(responseCheck);
+  }).then(checkResponse);
 };
