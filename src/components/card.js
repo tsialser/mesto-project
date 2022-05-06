@@ -10,7 +10,7 @@ import {
   popupImgTitle,
 } from "./constants.js";
 import { openPopup, closePopup } from "./modal.js";
-import { addNewCard } from "./api.js";
+import { addNewCard, likeCard, unlikeCard } from "./api.js";
 
 export let cardToDelete = {};
 
@@ -32,7 +32,15 @@ export function handleCardSubmit(evt) {
 }
 
 // Создание карточки
-export function createCard(link, title, cardId, likes, cardOwnerID, userId) {
+export function createCard(
+  link,
+  title,
+  cardId,
+  likes,
+  cardOwnerID,
+  userId,
+  cardLikes = []
+) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector(".element__image");
   const cardTitle = cardElement.querySelector(".element__title");
@@ -47,11 +55,35 @@ export function createCard(link, title, cardId, likes, cardOwnerID, userId) {
 
   //Лайк
   cardLike.addEventListener("click", function (evt) {
-    evt.target.classList.toggle("element__button_active");
+    if (evt.target.classList.contains("element__button_active")) {
+      unlikeCard(cardId)
+        .then((data) => {
+          cardLike.classList.remove("element__button_active");
+          cardCount.textContent = data.likes.length;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      likeCard(cardId)
+        .then((data) => {
+          cardLike.classList.add("element__button_active");
+          cardCount.textContent = data.likes.length;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   });
 
-  if (cardOwnerID !== userId) {
-    iconDelete.classList.add("element__delete-button_type_disabled");
+  function isLike(like) {
+    return like._id === userId;
+  }
+
+  const userLikedCard = cardLikes.some(isLike);
+
+  if (userLikedCard) {
+    cardLike.classList.add("element__button_active");
   }
 
   //Удаление
@@ -60,6 +92,10 @@ export function createCard(link, title, cardId, likes, cardOwnerID, userId) {
     openPopup(popupDelete);
     cardToDelete = { cardElement, cardId };
   });
+
+  if (cardOwnerID !== userId) {
+    iconDelete.classList.add("element__delete-button_type_disabled");
+  }
 
   //При клике на вновь созданную карточку открываем изображение
   cardImage.addEventListener("click", () => {

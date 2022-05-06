@@ -74,7 +74,8 @@ Promise.all([getUserInformation(), getCards()])
         card._id,
         card.likes.length,
         card.owner._id,
-        user._id
+        user._id,
+        card.likes
       );
       addCard(elementsContainer, initialCards);
     });
