@@ -1,5 +1,3 @@
-import { settings } from "./constants.js";
-
 //Функция, которая добавляет класс с ошибкой
 const showError = (formElement, formInput, errorMessage, settings) => {
   //Находим элемент ошибки внутри самой функции

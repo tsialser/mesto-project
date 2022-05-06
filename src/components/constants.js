@@ -38,7 +38,9 @@ export const settings = {
 export const popups = document.querySelectorAll(".popup");
 export const popupProfile = document.querySelector(".popup_type_profile");
 export const popupCards = document.querySelector(".popup_type_cards");
-export const popupEditAvatar = document.querySelector(".popup_type_edit-avatar");
+export const popupEditAvatar = document.querySelector(
+  ".popup_type_edit-avatar"
+);
 export const popupDelete = document.querySelector(".popup_type_delete");
 export const openImgPopup = document.querySelector(".popup_type_image");
 export const btnEditProfile = document.querySelector(".profile__edit-button");
@@ -47,7 +49,7 @@ export const closeButtonProfile = document.querySelector(
 );
 export const popupImg = document.querySelector(".popup__img");
 export const popupImgTitle = openImgPopup.querySelector(".popup__title-img");
-export const profileAvatar = document.querySelector('.profile__avatar');
+export const profileAvatar = document.querySelector(".profile__avatar");
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
 export const addCardButton = document.querySelector(".profile__add-button");
