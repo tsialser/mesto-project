@@ -20,11 +20,13 @@
     <main class="main">
       <section class="profile">
         <div class="profile__card">
-          <img
-            src="<%=require('./images/avatar.jpeg')%>"
-            alt="Аватарка профиля"
-            class="profile__avatar"
-          />
+          <div class="profile__icon">
+            <img
+              src="<%=require('./images/avatar.jpeg')%>"
+              alt="Аватарка профиля"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__info">
             <div class="profile__action">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -146,6 +148,45 @@
             id="card-submit-button"
           >
             Создать
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- Форма редактирования аватара-->
+    <section class="popup popup_type_edit-avatar">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__close-button button-hover"
+          id="close-button-cards"
+        ></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form
+          name="editAvatar"
+          id="form-edit-avatar"
+          class="popup__form"
+          novalidate
+        >
+          <label class="popup__field">
+            <input
+              type="url"
+              class="popup__input"
+              placeholder="Ссылка на аватар"
+              name="link"
+              id="link"
+              required
+            />
+            <span
+              class="link-error popup__input-error"
+              id="link-input-error"
+            ></span>
+          </label>
+          <button
+            type="submit"
+            class="popup__submit-button button-hover"
+            id="avatar-submit-button"
+          >
+            Сохранить
           </button>
         </form>
       </div>

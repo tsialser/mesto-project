@@ -15,6 +15,9 @@ import {
   popups,
   popupProfile,
   popupDelete,
+  editAvatar,
+  formEditAvatar,
+  popupEditAvatar,
 } from "./components/constants.js";
 
 import {
@@ -30,7 +33,11 @@ import {
   reset,
 } from "./components/modal.js";
 import { enableValidation } from "./components/validate.js";
-import { handleProfileSubmit, addFormValue } from "./components/utils.js";
+import {
+  handleProfileSubmit,
+  addFormValue,
+  handleAvatarSubmit,
+} from "./components/utils.js";
 import { getCards, deleteCard, getUserInformation } from "./components/api.js";
 
 // Открытие формы добавления карточек
@@ -46,11 +53,20 @@ btnEditProfile.addEventListener("click", () => {
   openPopup(popupProfile);
 });
 
+// Открытие формы редактирования аватара
+editAvatar.addEventListener("click", () => {
+  reset(formEditAvatar);
+  openPopup(popupEditAvatar);
+});
+
 // Прикрепляем обработчик к форме профиля:
 formProfile.addEventListener("submit", handleProfileSubmit);
 
 // Прикрепляем обработчик к форме карточки
 formCards.addEventListener("submit", handleCardSubmit);
+
+// Прикрепляем обработчик к форме смены автара
+formEditAvatar.addEventListener("submit", handleAvatarSubmit);
 
 // Закрытие попапов
 popups.forEach((element) => {
