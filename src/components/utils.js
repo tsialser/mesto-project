@@ -4,9 +4,12 @@ import {
   nameInput,
   jobInput,
   popupProfile,
+  profileAvatar,
+  popupEditAvatar,
+  avatarLink,
 } from "./constants.js";
 import { closePopup } from "./modal.js";
-import { editProfile } from "./api.js";
+import { editProfile, updateAvatar } from "./api.js";
 
 // Обработчик «отправки» формы редактирования профиля
 export function handleProfileSubmit(evt) {
@@ -30,4 +33,18 @@ export function handleProfileSubmit(evt) {
 export function addFormValue() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
+}
+
+export function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+
+  updateAvatar({
+    avatar: avatarLink.value,
+  })
+    .then((data) => {
+      profileAvatar.src = data.avatar;
+      closePopup(popupEditAvatar);
+      console.log(data);
+    })
+    .catch((err) => console.error(err));
 }
