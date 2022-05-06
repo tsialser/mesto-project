@@ -30,7 +30,7 @@ export function overlayClose(evt) {
 }
 
 // Сброс
-function buttonState(form) {
+function setbuttonState(form) {
   const submitButton = form.querySelector(settings.submitButton);
   const inputList = Array.from(form.querySelectorAll(settings.formInput));
   toggleButtonState(inputList, submitButton, settings);
@@ -38,5 +38,5 @@ function buttonState(form) {
 
 export function reset(form) {
   form.reset();
-  buttonState(form);
+  setbuttonState(form);
 }
