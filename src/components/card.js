@@ -8,26 +8,46 @@ import {
   openImgPopup,
   popupImg,
   popupImgTitle,
+  profileTitle,
+  profileSubtitle,
+  profileAvatar,
+  deleteCardButton,
 } from "./constants.js";
 import { openPopup, closePopup } from "./modal.js";
-import { addNewCard, likeCard, unlikeCard } from "./api.js";
+import {
+  addNewCard,
+  likeCard,
+  unlikeCard,
+  deleteCard,
+  getUserInformation,
+  getCards,
+} from "./api.js";
 
-export let cardToDelete = {};
+let cardToDelete = {};
 
 export function handleCardSubmit(evt) {
   evt.preventDefault();
+  evt.submitter.textContent = "Сохранение..";
 
   addNewCard({
     link: link.value,
     name: title.value,
   })
     .then((data) => {
-      const card = createCard(data.link, data.name, data._id);
+      const card = createCard(
+        data.link,
+        data.name,
+        data._id,
+        data.likes.length
+      );
       closePopup(popupCards);
       elementsContainer.prepend(card);
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = "Создать";
     });
 }
 
@@ -37,7 +57,7 @@ export function createCard(
   title,
   cardId,
   likes,
-  cardOwnerID,
+  cardOwnerId,
   userId,
   cardLikes = []
 ) {
@@ -53,7 +73,7 @@ export function createCard(
   cardTitle.textContent = title;
   cardCount.textContent = likes;
 
-  //Лайк
+  // Like/Unlike
   cardLike.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("element__button_active")) {
       unlikeCard(cardId)
@@ -76,24 +96,28 @@ export function createCard(
     }
   });
 
-  function isLike(like) {
+  // Проверяем, мы ли нажали на лайк
+  function checkLike(like) {
     return like._id === userId;
   }
 
-  const userLikedCard = cardLikes.some(isLike);
+  function filter(checkedLike) {
+    const filterCardLiked = cardLikes.some(checkedLike);
 
-  if (userLikedCard) {
-    cardLike.classList.add("element__button_active");
+    if (filterCardLiked) {
+      cardLike.classList.add("element__button_active");
+    }
   }
 
-  //Удаление
+  filter(checkLike);
 
+  //Удаление
   iconDelete.addEventListener("click", function () {
     openPopup(popupDelete);
     cardToDelete = { cardElement, cardId };
   });
 
-  if (cardOwnerID !== userId) {
+  if (cardOwnerId !== userId) {
     iconDelete.classList.add("element__delete-button_type_disabled");
   }
 
@@ -115,3 +139,37 @@ function popupImage(linkImg, titleImg) {
   popupImg.alt = titleImg;
   popupImgTitle.textContent = titleImg;
 }
+
+Promise.all([getUserInformation(), getCards()])
+  .then(([user, cards]) => {
+    profileTitle.textContent = user.name;
+    profileSubtitle.textContent = user.about;
+    profileAvatar.src = user.avatar;
+    profileAvatar.alt = `Аватар ${user.name}`;
+    cards.forEach((card) => {
+      const initialCards = createCard(
+        card.link,
+        card.name,
+        card._id,
+        card.likes.length,
+        card.owner._id,
+        user._id,
+        card.likes
+      );
+      addCard(elementsContainer, initialCards);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+deleteCardButton.addEventListener("click", () => {
+  deleteCard(cardToDelete.cardId)
+    .then(() => {
+      cardToDelete.cardElement.remove();
+      closePopup(popupDelete);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});

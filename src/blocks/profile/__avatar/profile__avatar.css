@@ -11,9 +11,3 @@
   transition: 0.3s ease-out;
   cursor: pointer;
 }
-
-@media screen and (max-width: 950px) {
-  .profile__avatar {
-    align-self: center;
-  }
-}

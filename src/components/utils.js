@@ -14,6 +14,7 @@ import { editProfile, updateAvatar } from "./api.js";
 // Обработчик «отправки» формы редактирования профиля
 export function handleProfileSubmit(evt) {
   evt.preventDefault();
+  evt.submitter.textContent = "Сохранение..";
 
   editProfile({
     name: nameInput.value,
@@ -26,6 +27,9 @@ export function handleProfileSubmit(evt) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = "Сохранить";
     });
 }
 
@@ -35,8 +39,10 @@ export function addFormValue() {
   jobInput.value = profileSubtitle.textContent;
 }
 
+// Обработчик обновления аватара
 export function handleAvatarSubmit(evt) {
   evt.preventDefault();
+  evt.submitter.textContent = "Сохранение..";
 
   updateAvatar({
     avatar: avatarLink.value,
@@ -44,7 +50,11 @@ export function handleAvatarSubmit(evt) {
     .then((data) => {
       profileAvatar.src = data.avatar;
       closePopup(popupEditAvatar);
-      console.log(data);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = "Сохранить";
+    });
 }

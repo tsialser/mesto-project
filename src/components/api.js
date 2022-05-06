@@ -44,22 +44,22 @@ export const getCards = () => {
   }).then(responseCheck);
 };
 
-export const deleteCard = (cardID) => {
-  return fetch(`${config.baseUrl}/cards/${cardID}`, {
+export const deleteCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
   }).then(responseCheck);
 };
 
-export const likeCard = (cardID) => {
-  return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
+export const likeCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: "PUT",
     headers: config.headers,
   }).then(responseCheck);
 };
 
-export const unlikeCard = (cardID) => {
-  return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
+export const unlikeCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
   }).then(responseCheck);
