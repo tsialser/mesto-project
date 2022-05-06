@@ -13,6 +13,7 @@
 * JS
 * Модули
 * Webpack
+* API
 
 **Figma**
 
